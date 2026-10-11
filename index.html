@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sistema escolar de reservas de equipamentos e espaços do MCJ.">
+  <meta name="description" content="Sistema escolar de reservas do MCJ.">
   <title>MCJ Locações | Reservas Escolares</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,52 +15,104 @@
   </header>
 
   <main>
-    <section>
-      <h2>Bem-vindo ao MCJ Locações</h2>
-      <p>Consulte os recursos da escola e organize suas solicitações de reserva.</p>
+    <section class="boas-vindas">
+      <p class="identificacao">GESTÃO DE RECURSOS ESCOLARES</p>
+      <h2>Reservas em um só lugar.</h2>
+      <p>Consulte os equipamentos e solicite recursos para suas atividades escolares.</p>
     </section>
 
     <section>
-      <h2>Recursos disponíveis para reserva</h2>
-
-      <article>
-        <h3>Notebooks comuns</h3>
-        <p>Quantidade cadastrada: 60 unidades</p>
-      </article>
-
-      <article>
-        <h3>Notebooks do curso técnico</h3>
-        <p>Quantidade cadastrada: 35 unidades</p>
-        <p>Exclusivos para as turmas 2A-ADM, 2B-DS, 3A-ADM e 3B-DS.</p>
-      </article>
-
-      <article>
-        <h3>Chromebooks</h3>
-        <p>Quantidade cadastrada: 25 unidades</p>
-      </article>
-
-      <article>
-        <h3>Tablets</h3>
-        <p>Quantidade cadastrada: 12 unidades</p>
-      </article>
-
-      <article>
-        <h3>Sala de informática</h3>
-        <p>1 sala cadastrada, com 25 computadores.</p>
-        <p>Informe a turma, a data e o horário ao solicitar uma reserva.</p>
-      </article>
+      <h2>Recursos cadastrados</h2>
+      <p>Inventário inicial da escola.</p>
+      <div id="catalogo" class="catalogo">
+        <p>Carregando recursos...</p>
+      </div>
     </section>
 
-    <section>
-      <h2>Próximas etapas</h2>
-      <p>O sistema terá formulário de reserva, consulta de disponibilidade e área administrativa.</p>
-      <p>As reservas ainda não estão habilitadas nesta versão inicial.</p>
+    <section id="area-reserva">
+      <h2>Solicitar uma reserva</h2>
+      <p>Preencha os dados abaixo. A solicitação dependerá da verificação de disponibilidade e aprovação.</p>
+
+      <form id="form-reserva">
+        <div class="campo">
+          <label for="responsavel">Nome do professor ou funcionário</label>
+          <input id="responsavel" name="responsavel" type="text" maxlength="100" required>
+        </div>
+
+        <div class="campo">
+          <label for="equipamento">Recurso desejado</label>
+          <select id="equipamento" name="equipamento" required>
+            <option value="">Selecione um recurso</option>
+            <option value="notebooksComuns">Notebooks comuns</option>
+            <option value="notebooksTecnicos">Notebooks do curso técnico</option>
+            <option value="chromebooks">Chromebooks</option>
+            <option value="tablets">Tablets</option>
+            <option value="salaInformatica">Sala de informática</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="turma">Turma que utilizará o recurso</label>
+          <select id="turma" name="turma" required>
+            <option value="">Selecione uma turma</option>
+            <option value="1A">1A</option>
+            <option value="1B">1B</option>
+            <option value="1C">1C</option>
+            <option value="1D">1D</option>
+            <option value="2A - ADM">2A - ADM</option>
+            <option value="2B - DS">2B - DS</option>
+            <option value="2C">2C</option>
+            <option value="3A - ADM">3A - ADM</option>
+            <option value="3B - DS">3B - DS</option>
+            <option value="3C">3C</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="quantidade">Quantidade desejada</label>
+          <input id="quantidade" name="quantidade" type="number" min="1" value="1" required>
+        </div>
+
+        <div class="campo">
+          <label for="data">Data da reserva</label>
+          <input id="data" name="data" type="date" required>
+        </div>
+
+        <div class="linha-campos">
+          <div class="campo">
+            <label for="inicio">Horário inicial</label>
+            <input id="inicio" name="inicio" type="time" required>
+          </div>
+
+          <div class="campo">
+            <label for="fim">Horário final</label>
+            <input id="fim" name="fim" type="time" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="finalidade">Finalidade da reserva</label>
+          <textarea id="finalidade" name="finalidade" rows="3" maxlength="500" required></textarea>
+        </div>
+
+        <button type="submit">Enviar solicitação</button>
+        <p id="mensagem-reserva" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="minhas-solicitacoes">
+      <h2>Solicitações registradas neste navegador</h2>
+      <p>Área provisória para acompanhar os pedidos deste protótipo.</p>
+      <div id="lista-reservas">
+        <p>Nenhuma solicitação registrada nesta sessão.</p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>MCJ Locações — Sistema de Reservas Escolares</p>
+    <p>MCJ Locações · Sistema de Reservas Escolares</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
